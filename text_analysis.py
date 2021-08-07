@@ -9,8 +9,7 @@ import spacy
 
 # pre-load and pre-compile required variables and methods
 nlp = spacy.load('en_core_web_sm')
-print(os.getcwd())
-print('its here')
+
 html_div_br_div_re = re.compile('</div><div><br></div>')
 html_newline_re = re.compile('(<br|</div|</p)')
 quotation_re = re.compile(u'[\u00AB\u00BB\u201C\u201D\u201E\u201F\u2033\u2036\u301D\u301E]')
@@ -18,12 +17,19 @@ apostrophe_re = re.compile(u'[\u02BC\u2019\u2032]')
 nominalization_re = re.compile('(?:ion|ions|ism|isms|ty|ties|ment|ments|ness|nesses|ance|ances|ence|ences)$')
 
 # os.getenv('HOME')
-synonyms_path = '/Users/hoanguyen' + '/expresso_website/nlp_data/synonyms.pickle'
-base_lemmas_path = '/Users/hoanguyen' + '/expresso_website/nlp_data/base_lemmas.pickle'
-phonemes_path =  '/Users/hoanguyen' + '/expresso_website/nlp_data/phonemes.pickle'
-stop_words_path = '/Users/hoanguyen' + '/expresso_website/nlp_data/stop_words.pickle'
-frequent_words_pickle_path = '/Users/hoanguyen' + '/expresso_website/nlp_data/frequent_words.pickle'
-filler_words_path = '/Users/hoanguyen' + '/expresso_website/nlp_data/filler_words.pickle'
+# print(os.getcwd()) = /app
+# File "/app/text_analysis.py", line 29, in <module>. FileNotFoundError:
+#  [Errno 2] No such file or directory: '/Users/hoanguyen/expresso_website/nlp_data/synonyms.pickle'
+
+print(os.path.join(os.getcwd(), '/nlp_data/synonyms.pickle'))
+print("hereeeeee")
+
+synonyms_path = os.path.join(os.getcwd(), '/nlp_data/synonyms.pickle')
+base_lemmas_path = os.path.join(os.getcwd(), '/nlp_data/base_lemmas.pickle') 
+phonemes_path = os.path.join(os.getcwd(), '/nlp_data/phonemes.pickle')  
+stop_words_path = os.path.join(os.getcwd(), '/nlp_data/stop_words.pickle') 
+frequent_words_pickle_path = os.path.join(os.getcwd(), '/nlp_data/frequent_words.pickle') 
+filler_words_path = os.path.join(os.getcwd(), '/nlp_data/filler_words.pickle') 
 
 
 with open(synonyms_path, 'rb') as file:
