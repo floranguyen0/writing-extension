@@ -37,8 +37,9 @@ for idx, word in enumerate(wordnet_words):
 # print(base_lemmas)
 # 'trade-in': 'trade_in'. Pay attention to '-'
 
-base_lemmas_path = '/Users/hoanguyen' + '/expresso_website/nlp_data/base_lemmas.pickle'
-# os.getenv('HOME')
+base_lemmas_path = os.path.join(os.getcwd(), 'nlp_data/base_lemmas.pickle') 
+# base_lemmas_path = os.getenv('HOME') + '/expresso_website/nlp_data/base_lemmas.pickle'
+
 
 
 if not os.path.isfile(base_lemmas_path):
@@ -47,4 +48,3 @@ if not os.path.isfile(base_lemmas_path):
    file.close() 
 
 
-# /Users/hoanguyen/expresso_website/nlp_data

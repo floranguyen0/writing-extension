@@ -5,8 +5,8 @@ from re import I
 
 
 
-frequent_words_text_path = '/Users/hoanguyen' + '/expresso_website/nlp_data/frequent_words.txt'
-# os.getenv('HOME')
+frequent_words_text_path = os.path.join(os.getcwd(), 'nlp_data/frequent_words.txt')  
+
 with open(frequent_words_text_path,'rt') as file:
     file =  file.read().splitlines()
 
@@ -19,7 +19,7 @@ for word in file:
 
 # print(len(frequent_words)) = 1000
 
-frequent_words_pickle_path = os.getenv('HOME') + '/nlp_data/frequent_words.pickle'
+frequent_words_pickle_path = os.path.join(os.getcwd(), 'nlp_data/frequent_words.pickle') 
 
 if not os.path.isfile(frequent_words_pickle_path):
  with open(frequent_words_pickle_path, 'wb') as file:

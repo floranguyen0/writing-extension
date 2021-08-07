@@ -27,7 +27,7 @@ cmu = {word: cmudict[word][0] for word in cmudict.keys()}
 # first_five = list(cmudict_item)[:5]
 # print(first_five) =[('a', ['AH0']), ('a.', ['EY1']), ('a42128', ['EY1', 'F', 'AO1', 'R', 'T', 'UW1', 'W', 'AH1', 'N', 'T', 'UW1', 'EY1', 'T']), ('aaa', ['T', 'R', 'IH2', 'P', 'AH0', 'L', 'EY1']), ('aaberg', ['AA1', 'B', 'ER0', 'G'])]
 # => cmu = {'a':['AH0'], 'a.':['EY1'],...}
-phonemes_path = '/Users/hoanguyen' + '/expresso_website/nlp_data/phonemes.pickle'
+phonemes_path = os.path.join(os.getcwd(), 'nlp_data/phonemes.pickle')  
 # os.getenv('HOME') 
 
 

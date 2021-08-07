@@ -21,7 +21,7 @@ stop_words = set(nltk.corpus.stopwords.words("english"))
 # type(stop_words) = <class 'list'>
 # stop_words[1:5] = ['me', 'my', 'myself', 'we']
 
-stop_words_path = '/Users/hoanguyen' + '/expresso_website/nlp_data/stop_words.pickle'
+stop_words_path = os.path.join(os.getcwd(), 'nlp_data/stop_words.pickle') 
 # os.getenv('HOME')
 if not os.path.isfile(stop_words_path):
  with open(stop_words_path, 'wb') as file:
