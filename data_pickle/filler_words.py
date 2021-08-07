@@ -6,6 +6,11 @@ filler_words = {'real', 'largely', 'hopefully', 'very', 'well', 'easily', 'defin
 # print(filler_words)
 # print(len(filler_words)) = 83
 
+# current_path = os.getcwd()
+# print(current_path)
+# print(os.path.join(current_path, 'nlp_data/synonyms.pickle'))
+# print("hereeeeee")
+
 filler_words_path = '/Users/hoanguyen' + '/expresso_website/nlp_data/buzzwords.pickle' + '/expresso_website/nlp_data/filler_words.pickle'
 # os.getenv('HOME')
 

@@ -21,15 +21,16 @@ nominalization_re = re.compile('(?:ion|ions|ism|isms|ty|ties|ment|ments|ness|nes
 # File "/app/text_analysis.py", line 29, in <module>. FileNotFoundError:
 #  [Errno 2] No such file or directory: '/Users/hoanguyen/expresso_website/nlp_data/synonyms.pickle'
 
-print(os.path.join(os.getcwd(), '/nlp_data/synonyms.pickle'))
+current_path = os.getcwd()
+print(os.path.join(current_path, 'nlp_data/synonyms.pickle'))
 print("hereeeeee")
 
-synonyms_path = os.path.join(os.getcwd(), '/nlp_data/synonyms.pickle')
-base_lemmas_path = os.path.join(os.getcwd(), '/nlp_data/base_lemmas.pickle') 
-phonemes_path = os.path.join(os.getcwd(), '/nlp_data/phonemes.pickle')  
-stop_words_path = os.path.join(os.getcwd(), '/nlp_data/stop_words.pickle') 
-frequent_words_pickle_path = os.path.join(os.getcwd(), '/nlp_data/frequent_words.pickle') 
-filler_words_path = os.path.join(os.getcwd(), '/nlp_data/filler_words.pickle') 
+synonyms_path = os.path.join(os.getcwd(), 'nlp_data/synonyms.pickle')
+base_lemmas_path = os.path.join(os.getcwd(), 'nlp_data/base_lemmas.pickle') 
+phonemes_path = os.path.join(os.getcwd(), 'nlp_data/phonemes.pickle')  
+stop_words_path = os.path.join(os.getcwd(), 'nlp_data/stop_words.pickle') 
+frequent_words_pickle_path = os.path.join(os.getcwd(), 'nlp_data/frequent_words.pickle') 
+filler_words_path = os.path.join(os.getcwd(), 'nlp_data/filler_words.pickle') 
 
 
 with open(synonyms_path, 'rb') as file:
