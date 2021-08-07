@@ -10,6 +10,7 @@ import spacy
 # pre-load and pre-compile required variables and methods
 nlp = spacy.load('en_core_web_sm')
 print(os.getcwd())
+print('its here')
 html_div_br_div_re = re.compile('</div><div><br></div>')
 html_newline_re = re.compile('(<br|</div|</p)')
 quotation_re = re.compile(u'[\u00AB\u00BB\u201C\u201D\u201E\u201F\u2033\u2036\u301D\u301E]')
