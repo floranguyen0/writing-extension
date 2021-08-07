@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Expresso</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/base.css" rel="stylesheet">
+    <script type="text/javascript" src="/static/jquery/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
+    {% block javascript %}{% endblock %}
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-47415341-1', 'expresso-app.org');
+        ga('create', 'UA-47415341-2', 'expresso-app.herokuapp.com');
+        ga('send', 'pageview');
+    </script>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" id="navbar-container">
+                <div class="navbar-header">
+                    <div role="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-base">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </div>
+                    <a class="navbar-brand" href="/">Expresso</a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-collapse-base">
+                    <ul class="nav navbar-nav">
+                        <li class="navbar-all" id="navbar-how-to-use"><a href="/how-to-use">How to use</a></li>
+                        <li class="navbar-all" id="navbar-metrics"><a href="/metrics">Metrics</a></li>
+                        <li class="navbar-all" id="navbar-tutorial"><a href="/tutorial">Tutorial</a></li>
+                        <li class="navbar-all" id="navbar-about"><a href="/about">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+{% block content %}{% endblock %}
+
+</body>
+
+</html>

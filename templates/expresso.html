@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block javascript %}
+    <link href="/static/css/expresso.css" rel="stylesheet">
+    <script type="text/javascript" src="/static/spin/spin.min.js"></script>
+    <script type="text/javascript" src="/static/js/expresso.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3" id="alert-container"> </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 column-left">
+                <div class="text-large" id="text-entry" contenteditable="true"></div>
+                <div class="text-large" id="text-placeholder">Write or paste some text here...</div>
+                <div class="text-large" id="expresso-pitch">
+                    <p>Expresso is a little tool to edit texts and improve your
+                    writing style. It will teach you to express yourself through
+                    writing more efficiently and help make your texts more
+                    readable, precise, and engaging. Expresso does not save
+                    entered texts to protect privacy. To learn more about
+                    Expresso: understand <a class="placeholder-link"
+                    href="/how-to-use">How to use</a>, learn about text style
+                    <a class="placeholder-link" href="/metrics">Metrics</a>, or
+                    do a quick interactive <a class="placeholder-link"
+                    href="/tutorial">Tutorial</a>.</p>
+                </div>
+            </div>
+            <div class="col-md-4 column-right">
+                <button type="button" class="btn btn-primary btn-lg btn-block" data-empty-text="Enter text to analyze" data-loading-text="Analyzing..."
+                        data-complete-text="Analysis complete" id="analyze-text"><span class="glyphicon glyphicon-search"></span> Analyze text</button>
+                <div id="spinner-container"> </div>
+                <div id="metrics-tables">
+                    <button type="button" class="btn btn-default btn-lg btn-block" id="clean-text"><span class="glyphicon glyphicon-download"></span> Clean text formatting</button>
+                    <p class="text-large">Metrics for editing <a href="/metrics#editing-metrics" target="_blank" class="metrics-info-link" id="editing-metrics-link"><span class="glyphicon glyphicon-info-sign"></span></a></p>
+                    <table class="table table-bordered table-hover text-medium">
+                        <tr> <td><span class="metric" data-metric="synonyms" id="synonyms-metric">synonyms</span></td> <td><span class="glyphicon glyphicon-ok-circle" id="synonyms-button"></span>
+                                 <span> </span><span id="synonyms-hover-text">hover mouse over words in text to see synonyms</span></td> </tr>
+                        <tr> <td><span class="metric" data-metric="weak-verbs">weak verbs</span></td> <td id="weak-verb-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="filler-words">filler words</span></td> <td id="filler-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="nominalizations">nominalizations</span></td> <td id="nominalization-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="entity-substitutions">entity substitutions</span></td> <td id="entity-substitution-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="negations">negations per sentence</span></td> <td id="negation-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="noun-clusters">clustered nouns</span></td> <td id="noun-cluster-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="long-noun-phrases">long noun phrases</span></td> <td id="long-noun-phrase-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="passive-voice">passive voice per sentence</span></td> <td id="passive-voice-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="modals">modals</span></td> <td id="modal-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="rare-words">rare words</span></td> <td id="rare-word-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="long-sents">extra long sentences</span></td> <td id="long-sentences-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="short-sents">extra short sentences</span></td> <td id="short-sentences-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="fragment">fragments</span></td> <td id="fragment-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="many-clauses">clause-heavy sentences</span></td> <td id="many-clauses-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="late-predicates">late predicates</span></td> <td id="late-predicates-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="detached-subjects">detached subjects</span></td> <td id="detached-subjects-ratio"></td> </tr>
+                        <tr> <td>frequent words</td> <td id="word-freq"></td> </tr>
+                        <tr> <td>frequent bigrams</td> <td id="bigram-freq"></td> </tr>
+                        <tr> <td>frequent trigrams</td> <td id="trigram-freq"></td> </tr>
+                    </table>
+                    <p class="text-large">General metrics <a href="/metrics#general-metrics" target="_blank" class="metrics-info-link" id="general-metrics-link"><span class="glyphicon glyphicon-info-sign"></span></a></p>
+                    <table class="table table-bordered table-hover text-medium">
+                        <tr> <td>characters</td> <td id="character-count"></td> </tr>
+                        <tr> <td>words</td> <td id="word-count"></td> </tr>
+                        <tr> <td><span data-metric="vocabulary-size">vocabulary size</span></td> <td id="vocabulary-size"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="sents">sentences</span></td> <td id="sentence-count"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="clauses-per-sentence">clauses per sentence</span></td> <td id="clauses-per-sentence"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="predicate-depth">predicate depth per sentence</span></td> <td id="predicate-depth"></td> </tr>
+                        <tr> <td>words per sentence</td> <td><span id="words-per-sentence"></span><span id="std-of-words-per-sentence"></span></td> </tr>
+                        <tr> <td>syllables per word</td> <td id="syllables-per-word"></td> </tr>
+                        <tr> <td>characters per word</td> <td id="characters-per-word"></td> </tr>
+                        <tr> <td><span data-metric="readability">readability grade</span></td> <td id="readability"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="nouns">nouns</span></td> <td id="noun-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="pronouns">pronouns</span></td> <td id="pronoun-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="verbs">verbs</span></td> <td id="verb-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="adjectives">adjectives</span></td> <td id="adjective-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="adverbs">adverbs</span></td> <td id="adverb-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="other-pos">other parts of speech</span></td> <td id="other-pos-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="declar-sents">declarative sentences</span></td> <td id="declarative-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="inter-sents">interrogative sentences</span></td> <td id="interrogative-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="exclam-sents">exclamative sentences</span></td> <td id="exclamative-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="simple">simple sentences</span></td> <td id="simple-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="complex">complex sentences</span></td> <td id="complex-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="compound">compound sentences</span></td> <td id="compound-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="complex-compound">complex-compound sentences</span></td> <td id="complex-compound-ratio"></td> </tr>
+                        <tr> <td><span class="metric" data-metric="stopwords">stopwords</span></td> <td id="stopword-ratio"></td> </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
