@@ -6,7 +6,8 @@ filler_words = {'real', 'largely', 'hopefully', 'very', 'well', 'easily', 'defin
 # print(filler_words)
 # print(len(filler_words)) = 83
 
-filler_words_path = os.getenv('HOME') + '/expresso_website/nlp_data/filler_words.pickle'
+filler_words_path = '/Users/hoanguyen' + '/expresso_website/nlp_data/buzzwords.pickle' + '/expresso_website/nlp_data/filler_words.pickle'
+# os.getenv('HOME')
 
 if not os.path.isfile(filler_words_path):
  with open(filler_words_path, 'wb') as file:
