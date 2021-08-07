@@ -37,12 +37,11 @@ for idx, word in enumerate(wordnet_words):
 # print(base_lemmas)
 # 'trade-in': 'trade_in'. Pay attention to '-'
 
-base_lemmas_path = os.getenv('HOME') + '/nlp_data/base_lemmas.pickle'
+base_lemmas_path = os.getenv('HOME') + '/expresso_website/nlp_data/base_lemmas.pickle'
 
 if not os.path.isfile(base_lemmas_path):
    with open(base_lemmas_path ,'wb') as file:
        pickle.dump(base_lemmas, file, pickle.HIGHEST_PROTOCOL)
    file.close() 
-
 
 

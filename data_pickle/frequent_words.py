@@ -5,7 +5,7 @@ from re import I
 
 
 
-frequent_words_text_path = os.getenv('HOME') + '/nlp_data/frequent_words.txt'
+frequent_words_text_path = os.getenv('HOME') + '/expresso_website/nlp_data/frequent_words.txt'
 
 with open(frequent_words_text_path,'rt') as file:
     file =  file.read().splitlines()

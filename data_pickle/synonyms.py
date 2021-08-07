@@ -34,7 +34,7 @@ for idx, word in enumerate(words):
 # print (all_synonyms)
 # 'so-so': ['acceptably', 'tolerably']. pay attention to '-'
 
-synonyms_path = os.getenv('HOME') + '/nlp_data/synonyms.pickle'
+synonyms_path = os.getenv('HOME') + '/expresso_website/nlp_data/synonyms.pickle'
 
 if not os.path.isfile(synonyms_path):
  with open(synonyms_path, 'wb') as file:

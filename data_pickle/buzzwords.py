@@ -6,7 +6,7 @@ buzzwords = {'entitlement', 'javascript', 'client-centric', 'nanotechnology', 'p
 # print(buzzwords)
 # print(len(buzzwords)) = 274
 
-buzzwords_path = os.getenv('HOME') + '/nlp_data/buzzwords.pickle'
+buzzwords_path = os.getenv('HOME') + '/expresso_website/nlp_data/buzzwords.pickle'
 
 if not os.path.isfile(buzzwords_path):
  with open(buzzwords_path, 'wb') as file:

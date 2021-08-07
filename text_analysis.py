@@ -16,12 +16,12 @@ quotation_re = re.compile(u'[\u00AB\u00BB\u201C\u201D\u201E\u201F\u2033\u2036\u3
 apostrophe_re = re.compile(u'[\u02BC\u2019\u2032]')
 nominalization_re = re.compile('(?:ion|ions|ism|isms|ty|ties|ment|ments|ness|nesses|ance|ances|ence|ences)$')
 
-synonyms_path = os.getenv('HOME') + '/nlp_data/synonyms.pickle'
-base_lemmas_path = os.getenv('HOME') + '/nlp_data/base_lemmas.pickle'
-phonemes_path = os.getenv('HOME') + '/nlp_data/phonemes.pickle'
-stop_words_path = os.getenv('HOME') + '/nlp_data/stop_words.pickle'
-frequent_words_pickle_path = os.getenv('HOME') + '/nlp_data/frequent_words.pickle'
-filler_words_path = os.getenv('HOME') + '/nlp_data/filler_words.pickle'
+synonyms_path = os.getenv('HOME') + '/expresso_website/nlp_data/synonyms.pickle'
+base_lemmas_path = os.getenv('HOME') + '/expresso_website/nlp_data/base_lemmas.pickle'
+phonemes_path = os.getenv('HOME') + '/expresso_website/nlp_data/phonemes.pickle'
+stop_words_path = os.getenv('HOME') + '/expresso_website/nlp_data/stop_words.pickle'
+frequent_words_pickle_path = os.getenv('HOME') + '/expresso_website/nlp_data/frequent_words.pickle'
+filler_words_path = os.getenv('HOME') + '/expresso_website/nlp_data/filler_words.pickle'
 
 
 with open(synonyms_path, 'rb') as file:
