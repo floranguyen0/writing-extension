@@ -7,7 +7,7 @@ var modifiedText = false;
 var displaySynonyms = true;
 var textField = null;
 var textPlaceholder = null;
-var expressoPitch = null;
+// var expressoPitch = null;
 var metricsTables = null;
 var metricsElements = null;
 var analyzeTextButton = null;
@@ -25,12 +25,11 @@ $(function(){
 
   // run at start
   $(document).ready(function() {
-    // document.getElementById("text-entry").innerHTML = "selectedText"
     
     // find important DOM elements for future use
     textField = $("#text-entry");
     textPlaceholder = $("#text-placeholder");
-    expressoPitch = $("#expresso-pitch");
+    // expressoPitch = $("#expresso-pitch");
     metricsTables = $("#metrics-tables");
     metricsElements = $("[data-metric]");
     analyzeTextButton = $("#analyze-text");
@@ -48,10 +47,11 @@ $(function(){
     $(".navbar-all").removeClass("active");
 
     // set analyze text button to empty mode
-    analyzeTextButton.button("empty");
-    setTimeout(function() {
-      analyzeTextButton.prop("disabled", true);
-    }, 10);
+
+    // analyzeTextButton.button("empty");
+    // setTimeout(function() {
+    //   analyzeTextButton.prop("disabled", true);
+    // }, 10);
 
     // hide results table
     metricsTables.hide();
@@ -63,8 +63,65 @@ $(function(){
       $('.column-right').css('height', columnHeight + 'px');
     }
 
+
     // focus on text field
     textField.focus();
+
+
+    // handle text placeholder and related analyze text button behavior
+
+    // textField.on("input", function() {
+      if (textField.text().length ) {
+        textPlaceholder.hide();
+        // expressoPitch.hide();
+        analyzeTextButton.button("reset");
+      }
+      else {
+        textPlaceholder.show();
+        // expressoPitch.show();
+        textField.html("");
+        analyzeTextButton.button("empty");
+        // setTimeout(function() {
+        //   analyzeTextButton.prop("disabled", true);
+        // }, 10);
+      }
+    // });
+
+    // strip formatting when pasting text into text entry field
+    textField.on("paste", function(e) {
+      ga('send', 'event', 'text-field', 'paste');
+      e.preventDefault();
+      var pastedText = "";
+      if (e.clipboardData || e.originalEvent.clipboardData) {
+        pastedText = (e.originalEvent || e).clipboardData.getData("text/plain");
+      } else if (window.clipboardData) {
+        pastedText = window.clipboardData.getData("Text");
+      }
+      if (document.queryCommandSupported("insertText")) {
+        document.execCommand("insertText", false, pastedText);
+      } else {
+        document.execCommand("paste", false, pastedText);
+      }
+    });
+
+    // capture event when added text into text entry field
+    textField.on("blur", function() {
+      if (modifiedText) {
+        ga('send', 'event', 'text-field', 'input');
+      }
+    });
+
+    // reset text, tokens, and metrics when text is changed
+    textField.on("input", function() {
+      modifiedText = true;
+      $(".metric-active").each(function(idx, el) {
+        el = $(el);
+        var classes = el.attr("class");
+        if (classes.search("nlp-highlighted-")==-1) {
+          el.removeClass("metric-active");
+        }
+      });
+    });
 
     // add metrics tooltips
     $("[data-metric='weak-verbs']").data("title", '<div class="tooltip-text">overused vague verbs</div>');
@@ -148,59 +205,6 @@ $(function(){
       }
     });
 
-    // handle text placeholder and related analyze text button behavior
-    textField.on("input", function() {
-      if (textField.text().length) {
-        textPlaceholder.hide();
-        expressoPitch.hide();
-        analyzeTextButton.button("reset");
-      }
-      else {
-        textPlaceholder.show();
-        expressoPitch.show();
-        textField.html("");
-        analyzeTextButton.button("empty");
-        setTimeout(function() {
-          analyzeTextButton.prop("disabled", true);
-        }, 10);
-      }
-    });
-
-    // strip formatting when pasting text into text entry field
-    textField.on("paste", function(e) {
-      ga('send', 'event', 'text-field', 'paste');
-      e.preventDefault();
-      var pastedText = "";
-      if (e.clipboardData || e.originalEvent.clipboardData) {
-        pastedText = (e.originalEvent || e).clipboardData.getData("text/plain");
-      } else if (window.clipboardData) {
-        pastedText = window.clipboardData.getData("Text");
-      }
-      if (document.queryCommandSupported("insertText")) {
-        document.execCommand("insertText", false, pastedText);
-      } else {
-        document.execCommand("paste", false, pastedText);
-      }
-    });
-
-    // capture event when added text into text entry field
-    textField.on("blur", function() {
-      if (modifiedText) {
-        ga('send', 'event', 'text-field', 'input');
-      }
-    });
-
-    // reset text, tokens, and metrics when text is changed
-    textField.on("input", function() {
-      modifiedText = true;
-      $(".metric-active").each(function(idx, el) {
-        el = $(el);
-        var classes = el.attr("class");
-        if (classes.search("nlp-highlighted-")==-1) {
-          el.removeClass("metric-active");
-        }
-      });
-    });
 
     // analyze text and display results
     analyzeTextButton.click(function() {
@@ -276,9 +280,9 @@ $(function(){
             textField.html(renderTokensToHtml());
             metricsTables.show();
             analyzeTextButton.button("complete");
-            setTimeout(function() {
-              analyzeTextButton.prop("disabled", true);
-            }, 10);
+            // setTimeout(function() {
+            //   analyzeTextButton.prop("disabled", true);
+            // }, 10);
             modifiedText = false;
             $(".metric").addClass("metric-active");
             setDisplaySynonyms(true);
