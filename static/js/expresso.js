@@ -118,7 +118,7 @@ $(function(){
     });
 
     // add metrics tooltips
-    $("[data-metric='weak-verbs']").data("title", '<div class="tooltip-text">overused vague verbs</div>');
+    // $("[data-metric='weak-verbs']").data("title", '<div class="tooltip-text">overused vague verbs</div>');
     $("[data-metric='filler-words']").data("title", '<div class="tooltip-text">unnecessary words typical for spoken language</div>');
     $("[data-metric='nominalizations']").data("title", '<div class="tooltip-text">complex nouns extended from shorter verbs, adjectives or nouns</div>');
     $("[data-metric='entity-substitutions']").data("title", '<div class="tooltip-text">pronouns and vague determiners</div>');
