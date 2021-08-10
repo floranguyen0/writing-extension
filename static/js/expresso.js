@@ -25,7 +25,8 @@ $(function(){
 
   // run at start
   $(document).ready(function() {
-
+    // document.getElementById("text-entry").innerHTML = "selectedText"
+    
     // find important DOM elements for future use
     textField = $("#text-entry");
     textPlaceholder = $("#text-placeholder");

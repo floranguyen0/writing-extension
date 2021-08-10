@@ -10,10 +10,9 @@ app.config.update(**os.environ)
 def expresso_route():
     return render_template('expresso.html')
 
-
 @app.route('/how-to-use')
 def how_to_use_route():
-    return render_template('how-to-use.html')
+    return render_template('metrics.html')
 
 
 @app.route('/metrics')
@@ -23,14 +22,13 @@ def metrics_route():
 
 @app.route('/tutorial')
 def tutorial_route():
-    return render_template('tutorial.html')
+    return render_template('metrics.html')
 
 
 @app.route('/about')
 def about_route():
-    return render_template('about.html')
-
-
+    return render_template('metrics.html')
+    
 @app.route('/analyze-text', methods=['POST'])
 def analyze():
     html = request.form.get('html', '')
