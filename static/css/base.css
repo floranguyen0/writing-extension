@@ -27,11 +27,3 @@ h3 {
     font-size: 18px;
     font-family: 'Georgia' !important;
 }
-
-.navbar-all {
-    border-left: 1px solid #DDDDDD;
-}
-
-.navbar-toggle {
-    cursor: pointer;
-}

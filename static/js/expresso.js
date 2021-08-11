@@ -183,9 +183,9 @@ $(function(){
     spinnerContainer.hide();
 
     // get rid of active state on the mobile menu button
-    $(".navbar-toggle").on("click", function() {
-      $(this).blur();
-    });
+    // $(".navbar-toggle").on("click", function() {
+    //   $(this).blur();
+    // });
 
     // adjust column heights on screen resize
     $(window).resize(function() {
