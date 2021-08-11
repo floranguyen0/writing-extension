@@ -76,17 +76,7 @@
     outline: none;
 }
 
-#text-placeholder {
-    position: absolute;
-    left: 15px;
-    top: 0;
-    z-index: -10;
-    color: #b3b3b3;
-}
 
-#expresso-pitch {
-    margin-bottom: 20px;
-}
 
 #spinner-container {
     height: 400px;
