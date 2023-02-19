@@ -1,12 +1,9 @@
 # Writing extension
 > An online Chrome extension to analyze and report on users' writing.
 
-## Credits
-This project was developed and published by [Nguyen Quynh Hoa (Flora)](https://github.com/floranguyen0)
-
 ## Setup
 Run the following commands from your terminal:
-1) `git clone https://github.com/floranguyen0/mmas-money-tracker` to clone this repository 
+1) `git clone https://github.com/floranguyen0/writing-extension.git` to clone this repository 
 2) `pip install -r requirements.txt` in the project root directory to install all the required dependencies.
 
 ## Demo video 
@@ -17,3 +14,6 @@ Run the following commands from your terminal:
 
 ## Website
 http://writing-extension.herokuapp.com/
+
+## Credits
+This project was developed and published by [Nguyen Quynh Hoa (Flora)](https://github.com/floranguyen0)
