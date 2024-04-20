@@ -10,7 +10,7 @@ en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_
 Flask==2.3.2
 gcloud==0.18.3
 googleapis-common-protos==1.53.0
-gunicorn==20.0.4
+gunicorn==22.0.0
 httplib2==0.19.1
 idna==3.2
 itsdangerous==2.0.1
